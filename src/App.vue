@@ -1,8 +1,12 @@
 <script>
 import { store } from "./assets/js/store";
 import axios from "axios";
+import AppHeader from "./components/AppHeader.vue";
 export default {
   name: 'App',
+  components: {
+    AppHeader
+  },
   data() {
     return {
       store
@@ -27,6 +31,24 @@ export default {
 </script>
 
 <template>
+
+  <AppHeader />
+  <!-- /#site_header -->
+  <main id="site_main"></main>
+  <!-- /#site_main -->
+  <footer id="site_footer"></footer>
+  <!-- /#site_footer -->
+
+
+
+  <div>
+    <ul>
+      <li>
+
+      </li>
+    </ul>
+
+  </div>
 
 </template>
 
