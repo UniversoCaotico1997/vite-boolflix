@@ -1,6 +1,6 @@
 <script>
 import { store } from "./assets/js/store";
-import axios from "axios";
+
 // import AppHeader from "./components/AppHeader.vue";
 export default {
   name: 'App',
@@ -10,25 +10,10 @@ export default {
   data() {
     return {
       store
-
-    }
-  },
-  methods: {
-    callApi(url) {
-      axios.get(url).then(response => {
-        console.log(response.data.results);
-        this.store.movies = response.data.results
-      })
-    },
-    searchMovie() {
-      console.log(store.searchText);
-      const searchMovieName = this.store.searchText
-      const url = `${this.store.API_url}?name${searchMovieName}`
-      console.log(url);
     }
   },
   mounted() {
-    this.callApi(this.store.API_url)
+    this.store.callApi(this.store.API_url)
   }
 }
 
