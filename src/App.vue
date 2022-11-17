@@ -1,11 +1,11 @@
 <script>
 import { store } from "./assets/js/store";
 import axios from "axios";
-import AppHeader from "./components/AppHeader.vue";
+// import AppHeader from "./components/AppHeader.vue";
 export default {
   name: 'App',
   components: {
-    AppHeader
+    // AppHeader
   },
   data() {
     return {
@@ -17,13 +17,13 @@ export default {
     callApi(url) {
       axios.get(url).then(response => {
         console.log(response.data);
-        this.store.results = response.data
+        this.store.movies = response.data
       })
     }
-
   },
   mounted() {
     this.callApi(this.store.API_url)
+
   }
 }
 
@@ -32,23 +32,27 @@ export default {
 
 <template>
 
-  <AppHeader />
+  <header id="site_header">
+    <div class="serchByMovies">
+      <input type="text" placeholder="search" v-model="store.searchText">
+      <button @click="searchMovie">Click Me!!!</button>
+    </div>
+  </header>
   <!-- /#site_header -->
-  <main id="site_main"></main>
-  <!-- /#site_main -->
-  <footer id="site_footer"></footer>
-  <!-- /#site_footer -->
 
 
+  <main id="site_main">
 
-  <div>
     <ul>
-      <li>
-
+      <li v-for="movie in store.movies">
+        {{ movie.titlte }}
       </li>
     </ul>
 
-  </div>
+  </main>
+  <!-- /#site_main -->
+  <footer id="site_footer"></footer>
+  <!-- /#site_footer -->
 
 </template>
 
