@@ -12,18 +12,23 @@ export default {
       store
 
     }
-
-  }, methods: {
+  },
+  methods: {
     callApi(url) {
       axios.get(url).then(response => {
-        console.log(response.data);
-        this.store.movies = response.data
+        console.log(response.data.results);
+        this.store.movies = response.data.results
       })
+    },
+    searchMovie() {
+      console.log(store.searchText);
+      const searchMovieName = this.store.searchText
+      const url = `${this.store.API_url}?name${searchMovieName}`
+      console.log(url);
     }
   },
   mounted() {
     this.callApi(this.store.API_url)
-
   }
 }
 
