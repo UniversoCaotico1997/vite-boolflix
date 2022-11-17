@@ -45,7 +45,7 @@ export default {
 
     <ul>
       <li v-for="movie in store.movies">
-        {{ movie.titlte }}
+        {{ movie.title }}
       </li>
     </ul>
 
